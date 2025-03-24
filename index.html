@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USD to INR Converter</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f0f4f8; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+    .container { background: #fff; padding: 30px; border-radius: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 300px; text-align: center; }
+    input, button { width: 100%; padding: 10px; margin-top: 10px; border-radius: 10px; border: 1px solid #ccc; font-size: 16px; }
+    button { background-color: #4CAF50; color: white; border: none; cursor: pointer; transition: background-color 0.3s; }
+    button:hover { background-color: #45a049; }
+    h1 { font-size: 24px; margin-bottom: 20px; }
+    .result { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💰 USD to INR Converter</h1>
+    <input type="number" id="usdInput" placeholder="Enter amount in USD" />
+    <input type="number" id="rateInput" placeholder="Enter exchange rate (default 83)" value="83" />
+    <button onclick="convertCurrency()">Convert</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function convertCurrency() {
+      const usd = parseFloat(document.getElementById('usdInput').value);
+      const rate = parseFloat(document.getElementById('rateInput').value);
+
+      if (isNaN(usd) || isNaN(rate)) {
+        document.getElementById('result').innerText = 'Please enter valid numbers.';
+        return;
+      }
+
+      const inr = usd * rate;
+      document.getElementById('result').innerText = `₹${inr.toFixed(2)} INR`;
+    }
+  </script>
+</body>
+</html>
